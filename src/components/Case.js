@@ -1,14 +1,10 @@
 import "../css/case.css";
 
-const Case = ({id}) => {
-    
-    const handleClick = () => {
-
-    }
+const Case = ({id, fill, handleClick}) => {
 
     return(
         <>
-            <div className="card" onClick={handleClick}>{id}</div>
+            <div className="card" onClick={() => handleClick(id)}>{fill}</div>
         </>
     )
 }

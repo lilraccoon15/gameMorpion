@@ -6,7 +6,7 @@ import "./css/app.css"
 const App = () => {
 
     const [gameConfig, setGameConfig] = useState({
-        damier : [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+        damier : [[null, null, null], [null, null, null], [null, null, null]],
     });
 
     const [display, setDisplay] = useState(false);
