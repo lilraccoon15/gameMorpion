@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Login from "./components/Login";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const [gameConfig, setGameConfig] = useState({
+        damier : [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+    });
+
+    const onHandleUsers = (players) => {
+        setGameConfig({
+            ...gameConfig,
+            players
+        })
+    }
+
+    // use effet pour damier quand utilisateurs set
+
+    return (
+        <>
+            <Login onHandleUsers={onHandleUsers}/>
+        
+        </>
+    )
 }
 
 export default App;
