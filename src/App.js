@@ -6,7 +6,7 @@ import "./css/app.css"
 const App = () => {
 
     const [gameConfig, setGameConfig] = useState({
-        damier : [[null, null, null], [null, null, null], [null, null, null]],
+        damier : Array(9).fill(null),
     });
 
     const [display, setDisplay] = useState(false);
@@ -25,7 +25,7 @@ const App = () => {
     return (
         <>
             <div className="app">
-                {JSON.stringify(gameConfig)}
+                {/* {JSON.stringify(gameConfig)} */}
                 { display ? <Game {...gameConfig}/> : <Login onHandleUsers={onHandleUsers} /> }
             </div>
         </>

@@ -1,10 +1,10 @@
 import "../css/case.css";
 
-const Case = ({id, fill, handleClick}) => {
+const Case = ({id, fill, handleClick, winner}) => {
 
     return(
         <>
-            <div className="card" onClick={() => handleClick(id)}>{fill}</div>
+            { fill || winner != "" ? <div className="card">{fill}</div> : <div className="card" onClick={() => handleClick(id)}>{fill}</div> }
         </>
     )
 }
