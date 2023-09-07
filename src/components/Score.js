@@ -1,8 +1,9 @@
-const Score = () => {
+const Score = ({scores}) => {
 
     return(
         <>
-            Score
+            <h2>Scores</h2>
+            {scores}
         </>
     )
 

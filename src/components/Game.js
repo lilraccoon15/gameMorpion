@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Case from "./Case";
 import "../css/game.css";
+import Score from "./Score";
 
 function Game({...gameConfig }) {
 
@@ -10,6 +11,18 @@ function Game({...gameConfig }) {
     const [currentPlayer, setCurrentPlayer] = useState(gameConfig.players.p1.name);
     const [logo, setLogo] = useState("X");
     const [winner, setWinner] = useState("");
+    // const [scores, setScores] = useState({
+    //     p1 : {
+    //         name : "",
+    //         win : 0,
+    //         loose : 0
+    //     },
+    //     p2 : {
+    //         name : "",
+    //         win : 0,
+    //         loose : 0
+    //     }
+    // });
 
     const wins = [
         [0, 1, 2],
@@ -57,8 +70,8 @@ function Game({...gameConfig }) {
             console.log(gameBoard[a])
             if(gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c])
             {
-                console.log("gagné");
-                setWinner(currentPlayer === gameConfig.players.p2.name ? gameConfig.players.p1.name : gameConfig.players.p2.name)
+                setWinner(currentPlayer === gameConfig.players.p2.name ? gameConfig.players.p1.name : gameConfig.players.p2.name)                
+
             }
         })
 
@@ -78,6 +91,8 @@ function Game({...gameConfig }) {
                 )}
             </div>
             <button onClick={newGame}>Nouvelle partie</button>
+
+            {/* <Score scores={scores}/> */}
         </div>
     );
 }
