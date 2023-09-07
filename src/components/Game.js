@@ -11,6 +11,7 @@ function Game({...gameConfig }) {
     const [currentPlayer, setCurrentPlayer] = useState(gameConfig.players.p1.name);
     const [logo, setLogo] = useState("X");
     const [winner, setWinner] = useState("");
+    const [lost, setLost] = useState("");
     // const [scores, setScores] = useState({
     //     p1 : {
     //         name : "",
@@ -67,13 +68,15 @@ function Game({...gameConfig }) {
         
         wins.map((item, index) => {
             let [a, b, c] = item;
-            console.log(gameBoard[a])
             if(gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c])
             {
                 setWinner(currentPlayer === gameConfig.players.p2.name ? gameConfig.players.p1.name : gameConfig.players.p2.name)                
-
             }
         })
+        if(gameBoard.filter((item) => item === null).length < 1)
+        {
+            setLost("Match nul !");
+        }
 
     }, [gameBoard])
 
@@ -81,7 +84,7 @@ function Game({...gameConfig }) {
     
         <div className="board_container">
             <h1>{gameConfig.players.p1.name} VS {gameConfig.players.p2.name}</h1>
-            <h2>{winner === "" ? 'Au tour de '+currentPlayer+' avec les '+logo : "Bravo "+winner+" a gagné !"}</h2>
+            <h2>{(winner === "") ? 'Au tour de '+currentPlayer+' avec les '+logo : (lost !== "") ? "Match nul !" : "Bravo "+winner+" a gagné !"}</h2>
             <h2></h2>
             <div className="board">
                 { gameBoard.map((item, index) => 
